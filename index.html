@@ -50,7 +50,7 @@
   lastY = e.offsetY;
 });
 Kv.addEventListener('mousemove', (e) => {
-  if (!isDrawing || e.buttons !== 1) return;
+  if (!isDrawing && e.buttons !== 1) return;
   const currentX = e.offsetX;
   const currentY = e.offsetY;
   draw(lastX, lastY, currentX, currentY);

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <canvas id='Kv' width='500' height='500' ></canvas>
@@ -56,6 +57,26 @@
   lastX = currentX;
   lastY = currentY;
  });
+Kv.addEventListener('touchstart', (e) => {
+  e.preventDefault();  
+  isDrawing = true;
+  const touch = e.touches[0];
+  lastX = touch.clientX - Kv.offsetLeft; 
+  lastY = touch.clientY - Kv.offsetTop;  
+});
+Kv.addEventListener('touchmove', (e) => {
+  if (!isDrawing) return;
+  e.preventDefault();  
+  const touch = e.touches[0];
+  const currentX = touch.clientX - Kv.offsetLeft;
+  const currentY = touch.clientY - Kv.offsetTop;
+  draw(lastX, lastY, currentX, currentY);
+  lastX = currentX;
+  lastY = currentY;
+});
+Kv.addEventListener('touchend', (e) => {
+  isDrawing = false;  
+});
  function draw(x1, y1, x2, y2) {
   ctx.beginPath();
   ctx.moveTo(x1, y1);
@@ -65,23 +86,12 @@
   ctx.stroke();
   ctx.closePath();
  }
-R.style.width = '20px';
-R.style.height = '20px';
-O.style.width = '20px';
-O.style.height = '20px';
-Y.style.width = '20px';
-Y.style.height = '20px';
-G.style.width = '20px';
-G.style.height = '20px';
-Bl.style.width = '20px';
-Bl.style.height = '20px';
-Blu.style.width = '20px';
-Blu.style.height = '20px';
-V.style.width = '20px';
-V.style.height = '20px';
-B.style.width = '20px';
-B.style.height = '20px';
-W.style.width = '20px';
-W.style.height = '20px';
+ function sizes(ids, width, height){
+  ids.forEach(id => {
+   id.style.width = width;
+   id.style.height = height;
+  });
+ }
+ sizes([R, O, Y, G, Bl, Blu, V, B, W], '20px', '20px');
 </script>
 </html>

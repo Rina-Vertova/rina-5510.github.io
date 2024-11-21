@@ -17,8 +17,12 @@
  var Kv = document.getElementById('Kv');
  var ctx = Kv.getContext('2d');
  let painting = false;
+ let currentColor = 'black';
  let lastX = 0,
      lestY = 0;
+ function setColor(color) {
+   currentColor = color;
+ }
  function startPosition(e) {
   painting = true;
   draw(e);

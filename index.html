@@ -3,7 +3,7 @@
   <canvas id='Kv' width='500' height='500' ></canvas>
   <br>
   <div id=Kn>
-  <button onclick="setColor('red')"><img id=R>https://sun9-78.userapi.com/s/v1/ig2/pMySKAvxn6lRkjuomGs5RJxueyYKWuivdE3McSBCsxHxOAfB-G7MClwZHHbIhLKtL3rxSFmUnzXEjv3X58cPJNdj.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=0r-x7zxC4phULDsj2GmUP-JNpd0IhzOwCr6R98bX71E&cs=100x100</img></button>
+  <button onclick="setColor('red')"><img id=R>'https://sun9-78.userapi.com/s/v1/ig2/pMySKAvxn6lRkjuomGs5RJxueyYKWuivdE3McSBCsxHxOAfB-G7MClwZHHbIhLKtL3rxSFmUnzXEjv3X58cPJNdj.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=0r-x7zxC4phULDsj2GmUP-JNpd0IhzOwCr6R98bX71E&cs=100x100'</img></button>
   </div>
   <style>
     canvas {
@@ -37,7 +37,6 @@
    ctx.beginPath();
    ctx.moveTo(e.clientX - Kv.offsetLeft, e.clientY - Kv.offsetTop);
  }
-
  Kv.addEventListener('mousedown', startPosition);
  Kv.addEventListener('mouseup', endPosition);
  Kv.addEventListener('mousemove', draw);

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <canvas id='Kv' width='500' height='500' ></canvas>
+  <br>
+  <div>
+  <button onclick="setColor('red')"><img id=R>ссылка</img></button>
+  </div>
+  <style>
+    canvas {
+      background-color: white;
+      border: 5px solid black;
+    }
+  </style>
+<script>
+ var Kn = document.getElementById('Kn');
+ var R = document.getElementById('R');
+ var Kv = document.getElementById('Kv');
+ var ctx = Kv.getContext('2d');
+ let painting = false;
+ let lastX = 0,
+     lestY = 0;
+ R.onclick = function() {
+  let color => 'red';
+ };
+ function startPosition(e) {
+  painting = true;
+  draw(e);
+ }
+ function endPosition() {
+  painting = false;
+  ctx.beginPath(); 
+ }
+ function draw(e) {
+  if (!painting) return;
+   ctx.lineWidth = 3; 
+   ctx.lineCap = 'round'; 
+   ctx.strokeStyle = color; 
+   ctx.lineTo(e.clientX - Kv.offsetLeft, e.clientY - Kv.offsetTop);
+   ctx.stroke();
+   ctx.beginPath();
+   ctx.moveTo(e.clientX - Kv.offsetLeft, e.clientY - Kv.offsetTop);
+ }
+
+ Kv.addEventListener('mousedown', startPosition);
+ Kv.addEventListener('mouseup', endPosition);
+ Kv.addEventListener('mousemove', draw);
+ Kv.addEventListener('mouseleave', endPosition);
+ Kn.style.width = '5%'
+</script>
+</html>

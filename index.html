@@ -46,8 +46,6 @@
  }
  Kv.addEventListener('mouseup', (e) => {
   isDrawing = false;  
-  lastX = e.offsetX;
-  lastY = e.offsetY;
 });
 Kv.addEventListener('mousemove', (e) => {
   if (!isDrawing && e.buttons !== 1) return;

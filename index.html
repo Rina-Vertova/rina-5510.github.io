@@ -16,35 +16,34 @@
  var R = document.getElementById('R');
  var Kv = document.getElementById('Kv');
  var ctx = Kv.getContext('2d');
- let painting = false;
+ let isDraving = false;
  let currentColor = 'black';
  let lastX = 0,
      lestY = 0;
  function setColor(color) {
    currentColor = color;
  }
- function startPosition(e) {
-  painting = true;
-  draw(e);
+ Kv.addEventListener('mouseup', (e) => {
+  isDraving = true;
+  lastX = e.offserX;
+  lastY = e.offsetY;
+ });
+ Kv.addEventListener('mousemove', (e) => {
+  if (!isDrawing) return;
+  const currentX = e.offsetX;
+  const currentY = e.offsetY;
+  draw(lastX, lastY, currentX, currentY);
+  lastX = currentX;
+  lastY = currentY;
+ });
+ function draw(x1, y1, x2, y2) {
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.strokeStyle = currentColor;
+  ctx.lineWidth = 5;
+  ctx.stroke();
+  ctx.closePath();
  }
- function endPosition() {
-  painting = false;
-  ctx.beginPath(); 
- }
- function draw(e) {
-  if (!painting) return;
-   ctx.lineWidth = 3; 
-   ctx.lineCap = 'round'; 
-   ctx.strokeStyle = color; 
-   ctx.lineTo(e.clientX - Kv.offsetLeft, e.clientY - Kv.offsetTop);
-   ctx.stroke();
-   ctx.beginPath();
-   ctx.moveTo(e.clientX - Kv.offsetLeft, e.clientY - Kv.offsetTop);
- }
- Kv.addEventListener('mousedown', startPosition);
- Kv.addEventListener('mouseup', endPosition);
- Kv.addEventListener('mousemove', draw);
- Kv.addEventListener('mouseleave', endPosition);
- Kn.style.width = '5%'
 </script>
 </html>

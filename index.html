@@ -44,16 +44,21 @@
  function setColor(color) {
    currentColor = color;
  }
- Kv.addEventListener('mouseup', (e) => {
-  isDrawing = false;
-  lastX = e.offsetX;
-  lastY = e.offsetY;
+ Kv.addEventListener('mousedown', (e) => {
+  if (e.buttons === 1) {  
+    isDrawing = true;
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+  }
+});
+Kv.addEventListener('mouseup', (e) => {
+  isDrawing = false;  
 });
 Kv.addEventListener('mousemove', (e) => {
-  if (!isDrawing && e.buttons !== 1) return;
+  if (!isDrawing || e.buttons !== 1) return; 
   const currentX = e.offsetX;
   const currentY = e.offsetY;
-  draw(lastX, lastY, currentX, currentY);
+  draw(lastX, lastY, currentX, currentY);  
   lastX = currentX;
   lastY = currentY;
 });

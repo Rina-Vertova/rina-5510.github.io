@@ -1,49 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sticky при горизонтальной прокрутке</title>
   <style>
-     body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            flex-direction: column;
-        }
-    .container {
-            width: 180%;
-            position: relative;
-            height: 5vh;
-            top: 15vh;
-            left: 74vw;
-        }
-    .timeline {
-            width: 200%;
-            height: 4px;
-            background-color: #5c5c5c;
-            position: relative;
-        }
-    .sticky-element {
-            position: sticky;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            backgroubnd-color: white;
-        }
-    .f {
-            top: 20vh;
-            right: 80vw;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
     }
 
-  </style>
-  <div class="container">
-        <div class="timeline" id="timeline"></div>
-    </div>
-  <div class='f'>
-        <button class='sticky-element'></button>
-    </div>
-<script>
+    .container {
+      width: 200%; /* Увеличиваем ширину контейнера для горизонтальной прокрутки */
+      height: 300px;
+      display: flex;
+      padding-top: 50px;
+      overflow-x: scroll; /* Включаем горизонтальную прокрутку */
+    }
 
-</script>
+    .sticky-element {
+      position: sticky;
+      top: 50px; /* Отступ от верхней границы */
+      left: 0; /* Элемент фиксируется слева при прокрутке вправо */
+      background-color: #ff6347;
+      padding: 10px 20px;
+      color: white;
+      font-size: 20px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      margin-right: 20px;
+    }
+
+    .content {
+      width: 200px;
+      background-color: #f0f0f0;
+      margin-right: 20px;
+      padding: 20px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="sticky-element">
+      Я фиксирован слева при прокрутке вправо!
+    </div>
+    <div class="content">
+      Контент 1
+    </div>
+    <div class="content">
+      Контент 2
+    </div>
+    <div class="content">
+      Контент 3
+    </div>
+    <div class="content">
+      Контент 4
+    </div>
+    <div class="content">
+      Контент 5
+    </div>
+    <div class="content">
+      Контент 6
+    </div>
+  </div>
+
+</body>
 </html>

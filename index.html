@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Пример прокрутки вправо</title>
+  <title>Прокручиваемая страница с фиксированным содержанием</title>
   <style>
     body {
       margin: 0;
@@ -11,9 +11,10 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      overflow-x: scroll;
+      overflow-x: auto;
     }
 
+    /* Контейнер для прокрутки вправо */
     .content-wrapper {
       display: flex;
       flex-direction: row;
@@ -21,6 +22,7 @@
       height: 100%;
     }
 
+    /* Содержимое */
     .sidebar {
       position: sticky;
       top: 0;
@@ -31,6 +33,10 @@
       border-right: 2px solid #ccc;
       height: 100%;
       overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      margin-top: 0;
     }
 
     .sidebar a {
@@ -47,6 +53,7 @@
       background-color: #bbb;
     }
 
+    /* Основной контент */
     .main-content {
       flex: 1;
       padding: 20px;
@@ -60,14 +67,30 @@
     .section h2 {
       margin-top: 0;
     }
+
+    /* Для кнопок перехода */
+    .scroll-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .scroll-button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
 
   <div class="content-wrapper">
-    <!-- Sidebar для содержания -->
+    <!-- Содержание -->
     <div class="sidebar">
-      <h3>Содержание</h3>
+      <h2>Содержание</h2>
       <a href="#section1">Раздел 1</a>
       <a href="#section2">Раздел 2</a>
       <a href="#section3">Раздел 3</a>
@@ -78,25 +101,35 @@
     <div class="main-content">
       <div id="section1" class="section">
         <h2>Раздел 1</h2>
-        <p>Это первый раздел. Здесь может быть много текста...</p>
+        <p>Текст раздела 1. Это начало содержимого страницы, которое можно прокручивать вправо.</p>
+        <button class="scroll-button" onclick="scrollToSection('section2')">Перейти ко второму разделу</button>
       </div>
       <div id="section2" class="section">
         <h2>Раздел 2</h2>
-        <p>Это второй раздел. Текст здесь также может быть длинным.</p>
+        <p>Текст раздела 2. Этот раздел содержит информацию, которую можно просматривать при прокрутке вправо.</p>
+        <button class="scroll-button" onclick="scrollToSection('section3')">Перейти к третьему разделу</button>
       </div>
       <div id="section3" class="section">
         <h2>Раздел 3</h2>
-        <p>Здесь размещен третий раздел с еще большим количеством текста.</p>
+        <p>Текст раздела 3. Здесь продолжается содержание, которое будет прокручиваться вправо.</p>
+        <button class="scroll-button" onclick="scrollToSection('section4')">Перейти к четвертому разделу</button>
       </div>
       <div id="section4" class="section">
         <h2>Раздел 4</h2>
-        <p>Наконец, четвертый раздел с заключением.</p>
+        <p>Текст раздела 4. Завершающий раздел на странице.</p>
+        <button class="scroll-button" onclick="scrollToSection('section1')">Перейти к первому разделу</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Простая обработка перехода по ссылкам в содержании
+    // Функция для плавного прокручивания к разделу
+    function scrollToSection(sectionId) {
+      const target = document.getElementById(sectionId);
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Обработчик перехода по ссылкам из бокового меню
     document.querySelectorAll('.sidebar a').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();

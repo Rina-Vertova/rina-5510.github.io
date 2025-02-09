@@ -10,7 +10,31 @@
   body, html {
     height: 100%;
 }
-
+.container {
+            width: 180%;
+            position: relative;
+            height: 5vh;
+            top: 15vh;
+            left: 74vw;
+        }
+      .timeline {
+            width: 200%;
+            height: 4px;
+            background-color: #5c5c5c;
+            position: relative;
+        }
+        .moving-line {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(
+                rgba(0, 0, 0, 0),
+                red,
+                rgba(0, 0, 0, 0));
+            top: -17px;
+            z-index: 3;
+            opacity: 0.6;
+        }
 .container1 {
     display: flex;
     height: 100%;
@@ -34,6 +58,7 @@
     overflow-x: auto;
     width: 100%;
     padding: 20px;
+    background-color: black;
 }
 
 section {
@@ -54,22 +79,14 @@ section p {
 <body>
     <div class="container1">
         <div class="sidebar">
-            <h2>Содержание</h2>
+            <h2>пн</h2>
         </div>
 
         <div class="content">
-            <section id="section1">
-                <h2>Раздел 1</h2>
-                <p>Это текст для раздела 1.</p>
-            </section>
-            <section id="section2">
-                <h2>Раздел 2</h2>
-                <p>Это текст для раздела 2.</p>
-            </section>
-            <section id="section3">
-                <h2>Раздел 3</h2>
-                <p>Это текст для раздела 3.</p>
-            </section>
+    <div class="container">
+        <div class="timeline" id="timeline"></div>
+        <div class="moving-line" id="movingLine"></div>
+    </div>
         </div>
     </div>
 

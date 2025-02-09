@@ -1,102 +1,48 @@
-
 <!DOCTYPE html>
 <html>
-  <canvas id='Kv' width='500' height='500' ></canvas>
-  <br>
-  <div id='Kn'>
-    <button onclick="setColor('red')"><img id='R' src='https://sun9-78.userapi.com/s/v1/ig2/pMySKAvxn6lRkjuomGs5RJxueyYKWuivdE3McSBCsxHxOAfB-G7MClwZHHbIhLKtL3rxSFmUnzXEjv3X58cPJNdj.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=0r-x7zxC4phULDsj2GmUP-JNpd0IhzOwCr6R98bX71E&cs=100x100'></button>
-    <button onclick="setColor('orange')"><img id='O' src='https://sun9-30.userapi.com/s/v1/ig2/mZyHpz9aJguubxf2TUie3_2iVodbzMprLmRyEavA1iwjxoWy1QQaLU5EwBvvXITLsZJJDAx_oIesk7mnZ7WPsa5G.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=GwCw_Hi0vDuwc2n2_zbnHo4y1rORWAvlV9kpcs5S7m8&cs=100x100'></button>
-    <button onclick="setColor('yellow')"><img id='Y' src='https://sun9-80.userapi.com/s/v1/ig2/4vEM5c-MRJ5Hm8jVyimL6Sc2e2Y19PQ_6y4Pe2aK0TsfuJxx5w0zgRrK_yImc2XXRxS4_yORQVT4UCUvN5QkXWzT.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=NVWDZ1PzemrIWF6aWgzszMzbgzRFIrUJ6gsVDCqi_s8&cs=100x100'></button>
-    <button onclick="setColor('green')"><img id='G' src='https://sun9-42.userapi.com/s/v1/ig2/UYk32195A6w0JoZaulidrRlXQvI5GklPkJoLw_p4HHljQhlHu81ZiyFjROd9HUG6lSMGTaAo3l6w-CYod4Aoa8EV.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=ytCjdGfngcmBC0rwCWlP_58vOTjAgNIq7qfnL3kTA3k&cs=100x100'></button>
-    <button onclick="setColor('#59cbe8')"><img id='Bl' src='https://sun9-9.userapi.com/s/v1/ig2/xG37HxzBFfcEh4Rtjzec7f6I3Y89ZQwQQFcIwrjF-140MpA-7yOx-A8R43n9aMP34w9F3wuR_nw04JmHfT7VCrhw.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=3QTYLjEPf6Twxdzj3vMWkc-XzzV6wUAuDEopFHKY5Ac&cs=100x100'></button>
-    <button onclick="setColor('blue')"><img id='Blu' src='https://sun9-26.userapi.com/s/v1/ig2/RTcouJz4Ga14R6SLQyk6ixP8YBYQdUmiMhlSJ-if9hCLIGVGfbYSQkH-YS7tNF0h6nHh1qgpdbT7y_Uezs8fIdka.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=qMf0xJJoEEvlMjZWPoyxmNGrGPqPtiUTmbpRkHuSnbA&cs=100x100'></button>
-    <button onclick="setColor('violet')"><img id='V' src='https://sun9-80.userapi.com/s/v1/ig2/MqPjY8edHWsl9jAfN5Kfj-NaNYqU4xxVZ7C1MBCqJBrF45hRhsFDfeSgSfK7NQmLfk_H8xSCjB0ur_AnKFjUs3Su.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=AzLZShH-BjSv2LCSjxCon06kCw5JT2dsZchwoDD25Qk&cs=100x100'></button>
-    <button onclick="setColor('black')"><img id='B' src='https://sun9-2.userapi.com/s/v1/ig2/eG927YJUOrXuP3zxclM2QVjXo6fhecROWYu4lQscXi0qNODSXR-ttPAvQQEI3LV_2gYhxCnqRwEtrvqdMzKnQJS5.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=Ti2GZ9olTJlf67SgeNpoLz_QXrpApqoZYDy1dweyfiI&cs=100x100'></button>
-    <button onclick="setColor('white')"><img id='W' src='https://sun9-76.userapi.com/s/v1/ig2/izzYyToJPg2S71EUq2_3gzZkLOTCgSS9W2eKdGpZEUYCNGVAgdGI4leAl7deE1S1U387xOwR4zgvVKSJA0hNfjKy.jpg?quality=95&as=32x32,48x48,72x72,104x104&from=bu&u=kn5qn4qs30Hajj71QIOV0ORxBZYS2TcfL7eO6kyAHeQ&cs=104x104'></button>
-  </div>
   <style>
-    #Kn {
-      width = '10px';
-      height = '15px';
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            flex-direction: column;
+        }
+    .container {
+            width: 180%;
+            position: relative;
+            height: 5vh;
+            top: 15vh;
+            left: 74vw;
+        }
+    .timeline {
+            width: 200%;
+            height: 4px;
+            background-color: #5c5c5c;
+            position: relative;
+        }
+    .sticky-element {
+            position: sticky;
+            width: 20px;
+            height: 20px;
+            backgroubnd-color: white;
+        }
+    .f {
+            top: 20vh;
+            right: 5vw;
     }
-    canvas {
-      background-color: white;
-      border: 5px solid black;
-    }
+
   </style>
+  <div class="container">
+        <div class="timeline" id="timeline"></div>
+    </div>
+  <div class='f'>
+        <button class='sticky-element'></button>
+    </div>
 <script>
- var Kn = document.getElementById('Kn');
- var R = document.getElementById('R');
- var O = document.getElementById('O');
- var Y = document.getElementById('Y');
- var G = document.getElementById('G');
- var Bl = document.getElementById('Bl');
- var Blu = document.getElementById('Blu');
- var V = document.getElementById('V');
- var B = document.getElementById('B');
- var W = document.getElementById('W');
- var Kv = document.getElementById('Kv');
- var ctx = Kv.getContext('2d');
- let isDrawing = false;
- let currentColor = 'black';
- let lastX = 0,
-     lastY = 0;
- function setColor(color) {
-   currentColor = color;
- }
- Kv.addEventListener('mousedown', (e) => {
-  if (e.buttons === 1) {  
-    isDrawing = true;
-    lastX = e.offsetX;
-    lastY = e.offsetY;
-  }
-});
-Kv.addEventListener('mouseup', (e) => {
-  isDrawing = false;  
-});
-Kv.addEventListener('mousemove', (e) => {
-  if (!isDrawing || e.buttons !== 1) return; 
-  const currentX = e.offsetX;
-  const currentY = e.offsetY;
-  draw(lastX, lastY, currentX, currentY);  
-  lastX = currentX;
-  lastY = currentY;
-});
-Kv.addEventListener('touchstart', (e) => {
-  e.preventDefault();  
-  isDrawing = true;
-  const touch = e.touches[0];
-  lastX = touch.clientX - Kv.offsetLeft; 
-  lastY = touch.clientY - Kv.offsetTop;  
-});
-Kv.addEventListener('touchmove', (e) => {
-  if (!isDrawing) return;
-  e.preventDefault();  
-  const touch = e.touches[0];
-  const currentX = touch.clientX - Kv.offsetLeft;
-  const currentY = touch.clientY - Kv.offsetTop;
-  draw(lastX, lastY, currentX, currentY);
-  lastX = currentX;
-  lastY = currentY;
-});
-Kv.addEventListener('touchend', (e) => {
-  isDrawing = false;  
-});
- function draw(x1, y1, x2, y2) {
-  ctx.beginPath();
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2, y2);
-  ctx.strokeStyle = currentColor;
-  ctx.lineWidth = 5;
-  ctx.stroke();
-  ctx.closePath();
- }
- function sizes(ids, width, height){
-  ids.forEach(id => {
-   id.style.width = width;
-   id.style.height = height;
-  });
- }
- sizes([R, O, Y, G, Bl, Blu, V, B, W], '20px', '20px');
+
 </script>
 </html>

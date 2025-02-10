@@ -1,510 +1,101 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Расписание</title>
+<html>
+  <canvas id='Kv' width='500' height='500' ></canvas>
+  <br>
+  <div id='Kn'>
+    <button onclick="setColor('red')"><img id='R' src='https://sun9-78.userapi.com/s/v1/ig2/pMySKAvxn6lRkjuomGs5RJxueyYKWuivdE3McSBCsxHxOAfB-G7MClwZHHbIhLKtL3rxSFmUnzXEjv3X58cPJNdj.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=0r-x7zxC4phULDsj2GmUP-JNpd0IhzOwCr6R98bX71E&cs=100x100'></button>
+    <button onclick="setColor('orange')"><img id='O' src='https://sun9-30.userapi.com/s/v1/ig2/mZyHpz9aJguubxf2TUie3_2iVodbzMprLmRyEavA1iwjxoWy1QQaLU5EwBvvXITLsZJJDAx_oIesk7mnZ7WPsa5G.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=GwCw_Hi0vDuwc2n2_zbnHo4y1rORWAvlV9kpcs5S7m8&cs=100x100'></button>
+    <button onclick="setColor('yellow')"><img id='Y' src='https://sun9-80.userapi.com/s/v1/ig2/4vEM5c-MRJ5Hm8jVyimL6Sc2e2Y19PQ_6y4Pe2aK0TsfuJxx5w0zgRrK_yImc2XXRxS4_yORQVT4UCUvN5QkXWzT.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=NVWDZ1PzemrIWF6aWgzszMzbgzRFIrUJ6gsVDCqi_s8&cs=100x100'></button>
+    <button onclick="setColor('green')"><img id='G' src='https://sun9-42.userapi.com/s/v1/ig2/UYk32195A6w0JoZaulidrRlXQvI5GklPkJoLw_p4HHljQhlHu81ZiyFjROd9HUG6lSMGTaAo3l6w-CYod4Aoa8EV.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=ytCjdGfngcmBC0rwCWlP_58vOTjAgNIq7qfnL3kTA3k&cs=100x100'></button>
+    <button onclick="setColor('#59cbe8')"><img id='Bl' src='https://sun9-9.userapi.com/s/v1/ig2/xG37HxzBFfcEh4Rtjzec7f6I3Y89ZQwQQFcIwrjF-140MpA-7yOx-A8R43n9aMP34w9F3wuR_nw04JmHfT7VCrhw.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=3QTYLjEPf6Twxdzj3vMWkc-XzzV6wUAuDEopFHKY5Ac&cs=100x100'></button>
+    <button onclick="setColor('blue')"><img id='Blu' src='https://sun9-26.userapi.com/s/v1/ig2/RTcouJz4Ga14R6SLQyk6ixP8YBYQdUmiMhlSJ-if9hCLIGVGfbYSQkH-YS7tNF0h6nHh1qgpdbT7y_Uezs8fIdka.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=qMf0xJJoEEvlMjZWPoyxmNGrGPqPtiUTmbpRkHuSnbA&cs=100x100'></button>
+    <button onclick="setColor('violet')"><img id='V' src='https://sun9-80.userapi.com/s/v1/ig2/MqPjY8edHWsl9jAfN5Kfj-NaNYqU4xxVZ7C1MBCqJBrF45hRhsFDfeSgSfK7NQmLfk_H8xSCjB0ur_AnKFjUs3Su.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=AzLZShH-BjSv2LCSjxCon06kCw5JT2dsZchwoDD25Qk&cs=100x100'></button>
+    <button onclick="setColor('black')"><img id='B' src='https://sun9-2.userapi.com/s/v1/ig2/eG927YJUOrXuP3zxclM2QVjXo6fhecROWYu4lQscXi0qNODSXR-ttPAvQQEI3LV_2gYhxCnqRwEtrvqdMzKnQJS5.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=Ti2GZ9olTJlf67SgeNpoLz_QXrpApqoZYDy1dweyfiI&cs=100x100'></button>
+    <button onclick="setColor('white')"><img id='W' src='https://sun9-76.userapi.com/s/v1/ig2/izzYyToJPg2S71EUq2_3gzZkLOTCgSS9W2eKdGpZEUYCNGVAgdGI4leAl7deE1S1U387xOwR4zgvVKSJA0hNfjKy.jpg?quality=95&as=32x32,48x48,72x72,104x104&from=bu&u=kn5qn4qs30Hajj71QIOV0ORxBZYS2TcfL7eO6kyAHeQ&cs=104x104'></button>
+  </div>
   <style>
-    /* Стили для страницы */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: black;
-      overflow-y: hidden
+    #Kn {
+      width = '10px';
+      height = '15px';
     }
-
-    /* Стили для контейнера с горизонтальной прокруткой */
-    .scroll-container {
-      width: 100vw;
-      height: 100vh;
-      overflow-x: auto;
-      white-space: nowrap;
-      position: relative;
+    canvas {
+      background-color: white;
+      border: 5px solid black;
     }
-
-    /* Стили для содержимого страницы */
-    .content {
-      display: inline-block;
-      width: 300vw; /* Делаем контент шире для прокрутки */
-      height: 100%;
-    }
-
-    /* Стили для фиксированного меню */
-    .fixed-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0);
-      padding: 0;
-      text-align: center;
-      z-index: 10;
-    }
-
-    /* Стили для кнопок навигации */
-    .button {
-      margin: 0;
-      padding: 20px;
-      bottom: 60px;
-      width: 60px;
-      height: 70px;
-      color: white;
-      border: none;
-      background: linear-gradient(
-                rgba(255, 255, 255, 0.6),
-                rgba(0, 0, 0, 0));
-      font-size: 16px;
-    }
-    .timeline {
-            width: 180%;
-            height: 12px;
-            background-color: #5c5c5c;
-            position: relative;
-      left: 1vw;
-        }
-        .moving-line {
-            position: absolute;
-            width: 6px;
-            height: 120px;
-            background: linear-gradient(
-                rgba(0, 0, 0, 0),
-                red,
-                rgba(0, 0, 0, 0));
-            top: -51px;
-            z-index: 3;
-            opacity: 0.6;
-        }
-    .container {
-            width: 180%;
-            position: relative;
-            height: 15vh;
-            top: 45vh;
-        }
-    .marker {
-            position: absolute;
-            bottom: -31px;
-            width: 2px;
-            height: 80px;
-            background: linear-gradient(
-                rgba(0, 0, 0, 0),
-                #5c5c5c,
-                rgba(0, 0, 0, 0));
-        }
-        .hour-marker {
-            position: absolute;
-            bottom: -75px;
-            width: 3px;
-            height: 180px;
-            background: linear-gradient(
-                rgba(0, 0, 0, 0),
-                #707070,
-                rgba(0, 0, 0, 0));
-        }
-        .hour-label {
-            position: absolute;
-            bottom: 66px;
-            left: 3vw;
-            font-size: 21px;
-            color: #e1e1e1;
-            text-align: center;
-        }
-        .hour-label-other {
-            position: absolute;
-            bottom: -81px;
-            font-size: 21px;
-            color: #e1e1e1;
-            text-align: center;
-        }
-        .event {
-            position: absolute;
-            padding: 2px;
-            border-radius: 3px;
-            text-align: center;
-            font-size: 15px;
-            z-index: 1;
-            width: 150%;
-        }
-/* Стили для уроков Кати */
-        .event.type1 {
-            background-color: rgba(62, 88, 229, 0.6);
-            height: 21px;
-            top: -45px;
-            color: #D1D8FF;
-        }
-/* Стили для уроков Рустама */
-        .event.type2 {
-            background-color: rgba(0, 126, 91, 0.6);
-            height: 21px;
-            top: -12px;
-            color: #C1FFED;
-        }
-/* Стили для уроков Насти */
-        .event.type5 {
-            background-color: rgba(232, 80, 87, 0.6);
-            height: 21px;
-            top: 21px;
-            color: #FFE2E3;
-        }
-/* Стили для столовой */
-        .event.type3 {
-            background-color: rgba(245, 182, 31, 0.4);
-            height: 21px;
-            top: -45px;
-        }
-        .event.type4 {
-            background-color: #f5b631;
-            height: 21px;
-            top: -12px;
-            opacity: 0.4;
-        }
-        .event.type6 {
-            background-color: rgba(245, 182, 31, 0.4);
-            height: 21px;
-            top: 21px;
-        }
-            @media (orientation: portrait){
-            .hour-label {
-                font-size: 15px;
-            }
-            .hour-label-other {
-                font-size: 15px;
-            }
-            .container {
-                width: 280%;
-            }
-        }
-
   </style>
-</head>
-       <div id="modal">
-    <div id="buttons-container">
-        <button class="button" onclick="setDay(1);">пн</button>
-        <button class="button" onclick="setDay(2);">вт</button>
-        <button class="button" onclick="setDay(3);">ср</button>
-        <button class="button" onclick="setDay(4);">чт</button>
-        <button class="button" onclick="setDay(5);">пт</button>
-        <button class="button" onclick="setDay(6);">сб</button>
-        <button class="button" onclick="setDay(0);">вс</button>
-    </div>
-     </div>
-<body>
-
-  <!-- Навигационное меню -->
-  <div class="fixed-nav">
-        <button class="button" onclick="setDay(1);">пн</button>
-        <button class="button" onclick="setDay(2);">вт</button>
-        <button class="button" onclick="setDay(3);">ср</button>
-        <button class="button" onclick="setDay(4);">чт</button>
-        <button class="button" onclick="setDay(5);">пт</button>
-        <button class="button" onclick="setDay(6);">сб</button>
-        <button class="button" onclick="setDay(0);">вс</button>
-  </div>
-
-  <!-- Контейнер с горизонтальной прокруткой -->
-  <div class="scroll-container">
-    <div class="content">
-      <div class="container">
-        <div class="timeline" id="timeline"></div>
-        <div class="moving-line" id="movingLine"></div>
-    </div>
-    </div>
-  </div>
-
-  <script>
-        const timeZoneOffset = -5;
-        const otherTimeZoneOffset = -7;
-        const stepMinutes = 10;
-        const stepHours = 60;
-        const timeline = document.getElementById('timeline');
-        createModal('modal', 'buttons-container');
-        const eventsByDay = {
-    0: [ // Воскресенье
-    
-    ],
-    1: [ // Понедельник
-        { time: new Date().setHours(9, 0), label: 'Разговоры', type: 'type1', duration: 30 * 60 * 1000},
-        { time: new Date().setHours(9, 45), label: 'Физ-ра', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(10, 25), type: 'type3', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(10, 40), label: 'География', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(11, 30), label: 'История', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 30), label: 'Алгебра', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 30), label: 'Литература', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 10), type: 'type3', duration: 20 * 60 * 1000},
-        { time: new Date().setHours(14, 30), label: 'Английский', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 15), label: 'Россия - моя история', type: 'type1', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Разговоры', type: 'type2', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 30), label: 'Английский', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 25), label: 'Алгебра', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 20), label: 'Литература', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 00), type: 'type4', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(14, 15), label: 'Осетинский', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 05), label: 'География', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 50), label: 'Вероятность', type: 'type2', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Разговоры', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 25), label: 'Биология', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(12, 30), label: 'Английский', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(13, 35), label: 'Английский', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(14, 30), label: 'Алгебра', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(15, 25), label: 'Обществознание', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(16, 30), label: 'Русский', type: 'type5', duration: 45 * 60 * 1000}
-    ],
-    2: [ // Вторник
-        { time: new Date().setHours(9, 0), label: 'Обществознание', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(9, 55), label: 'Биология', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(10, 35), type: 'type3', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(10, 50), label: 'Геометрия', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(11, 40), label: 'ОБЗР', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 40), label: 'Литература', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 40), label: 'Информатика', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 20), type: 'type3', duration: 20 * 60 * 1000},
-        { time: new Date().setHours(14, 40), label: 'Сочинения', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 25), label: 'Семьеведение', type: 'type1', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Физика', type: 'type2', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 30), label: 'Осетинский', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 25), label: 'Геометрия', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 20), label: 'Химия', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 00), type: 'type4', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(14, 15), label: 'Литература', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 05), label: 'История', type: 'type2', duration: 40 * 60 * 1000},
-        
-        { time: new Date().setHours(10, 30), label: 'Физика', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 25), label: 'Физ-ра', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(12, 30), label: 'Геометрия', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(13, 35), label: 'Информатика', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(14, 30), label: 'Алгебра', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(15, 25), label: 'Химия', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(16, 30), label: 'История', type: 'type5', duration: 45 * 60 * 1000}
-    ],
-    3: [ // Среда
-        { time: new Date().setHours(9, 0), label: 'Физика', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(9, 55), label: 'Русский', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(10, 35), type: 'type3', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(10, 50), label: 'Физ-ра', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(11, 40), label: 'Химия', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 40), label: 'География', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 40), label: 'Обществознание', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 20), type: 'type3', duration: 20 * 60 * 1000},
-        { time: new Date().setHours(14, 40), label: 'Классный час', type: 'type1', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Обществознание', type: 'type2', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 30), label: 'Биология', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 25), label: 'Алгебра', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 20), label: 'Обществознание', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 00), type: 'type4', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(14, 15), label: 'Русский', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 05), label: 'Физика', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 50), label: 'Допы общество', type: 'type2', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Алгебра', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 25), label: 'Обществознание', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(12, 30), label: 'Английский', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(13, 35), label: 'Английский', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(14, 30), label: 'Вероятность', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(15, 25), label: 'История', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(16, 30), label: 'Литература', type: 'type5', duration: 45 * 60 * 1000}
-    ],
-    4: [ // Четверг
-        { time: new Date().setHours(9, 0), label: 'Литература', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(9, 55), label: 'Обществознание', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(10, 35), type: 'type3', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(10, 50), label: 'История', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(11, 40), label: 'Английский', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 40), label: 'География', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 40), label: 'Алгебра', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 20), type: 'type3', duration: 20 * 60 * 1000},
-        { time: new Date().setHours(14, 40), label: 'Подготовка к ЕГЭ', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 25), label: 'Билет в будущее', type: 'type1', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Английский', type: 'type2', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 30), label: 'Русский', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 25), label: 'Алгебра', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 20), label: 'Геометрия', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 00), type: 'type4', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(14, 15), label: 'Русский', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 05), label: 'Обществознание', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 50), label: 'Химия', type: 'type2', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Физика', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 25), label: 'Английский', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(12, 30), label: 'Английский', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(13, 35), label: 'Алгебра', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(14, 30), label: 'Русский', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(15, 25), label: 'Русский', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(16, 30), label: 'Обществознание', type: 'type5', duration: 45 * 60 * 1000}
-    ],
-    5: [ // Пятница
-        { time: new Date().setHours(9, 0), label: 'Английский', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(9, 55), label: 'Физика', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(10, 35), type: 'type3', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(10, 50), label: 'Алгебра', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(11, 40), label: 'Русский', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 40), label: 'Обществознание', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 40), label: 'Вероятность', type: 'type1', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 20), type: 'type3', duration: 20 * 60 * 1000},
-        { time: new Date().setHours(14, 40), label: 'Физ-ра', type: 'type1', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Литература', type: 'type2', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 30), label: 'ОБЗР', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(12, 25), label: 'Физика', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(13, 20), label: 'Обществознание', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(14, 00), type: 'type4', duration: 15 * 60 * 1000},
-        { time: new Date().setHours(14, 15), label: 'Английский', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 05), label: 'Осетинский', type: 'type2', duration: 40 * 60 * 1000},
-        { time: new Date().setHours(15, 50), label: 'История', type: 'type2', duration: 40 * 60 * 1000},
-
-        { time: new Date().setHours(10, 30), label: 'Обществознание', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(11, 25), label: 'Геометрия', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(12, 30), label: 'Геометрия', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(13, 35), label: 'География', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(14, 30), label: 'Экономика', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(15, 25), label: 'Литерартура', type: 'type5', duration: 45 * 60 * 1000},
-        { time: new Date().setHours(16, 30), label: 'ОБЗР', type: 'type5', duration: 45 * 60 * 1000}
-    ],
-    6: [ // Суббота
-       
-    ]
-        };
-const millisecondsInDay = 24 * 60 * 60 * 1000;
-const startOfDay = new Date().setHours(0, 0, 0, 0);         
-        function displayEvents(day = 0) {
-            const timeline = document.querySelector('.timeline');
-            const timelineWidth = timeline.offsetWidth;
-             
-            const existingEvents = timeline.querySelectorAll('.event');
-            existingEvents.forEach(event => event.remove());
-            const currentDay = day == 0 ? new Date().getDay() : day;
-            eventsByDay[currentDay].forEach(event => {                
-                const eventElement = document.createElement('div');
-                eventElement.classList.add('event');
-                eventElement.classList.add(event.type);
-                eventElement.style.left = ((((new Date(event.time)) - startOfDay) / millisecondsInDay) * timelineWidth) + 'px';                               
-                eventElement.style.width = (((event.duration / millisecondsInDay) * timelineWidth) - 4) + 'px';
-                eventElement.textContent = event.label;
-                timeline.appendChild(eventElement);
-            });
-        }
-        function renderTimeMarkers() {
-            const existingMarkers = document.querySelectorAll('.marker, .hour-marker, .hour-label, .hour-label-other');
-            existingMarkers.forEach(marker => marker.remove());
-            const width = timeline.offsetWidth;            
-            const totalSteps = (24 * 60) / stepMinutes;
-            for (let i = 0; i < totalSteps; i++) {
-                const marker = document.createElement('div');
-                marker.classList.add('marker');
-                marker.style.left = (i * (width / totalSteps)) + 'px';
-                timeline.appendChild(marker);
-            }
-            for (let i = 0; i < 24; i++) {
-                const hourMarker = document.createElement('div');
-                hourMarker.classList.add('hour-marker');
-                const position = (i * (width / 24));
-                hourMarker.style.left = `${position}px`;
-                const hourLabel = document.createElement('div');
-                hourLabel.classList.add('hour-label');
-                hourLabel.textContent = `${i < 10 ? '0' : ''}${i}:00`;
-                hourLabel.style.left = `${position}px`;
-                const hourLabelOther = document.createElement('div');
-                hourLabelOther.classList.add('hour-label-other');
-                const adjustedHour = (i + (otherTimeZoneOffset - timeZoneOffset) + 24) % 24;
-                hourLabelOther.textContent = `${adjustedHour < 10 ? '0' : ''}${adjustedHour}:00`;
-                hourLabelOther.style.left = `${position}px`;
-                timeline.appendChild(hourMarker);
-                timeline.appendChild(hourLabel);
-                timeline.appendChild(hourLabelOther);
-            }
-        }
-        const movingLine = document.getElementById('movingLine');
-        function updateMovingLines() {
-            const now = new Date();
-            const localTime = new Date(now.toLocaleString('en-US', { timeZone: `Etc/GMT${timeZoneOffset >= 0 ? '+' : '-'}${Math.abs(timeZoneOffset)}`}));
-            const otherTime = new Date(now.toLocaleString('en-US', { timeZone: `Etc/GMT${otherTimeZoneOffset >= 0 ? '+' : '-'}${Math.abs(otherTimeZoneOffset)}` }));
-            const startOfDayLocal = new Date(localTime).setHours(0, 0, 0, 0);           
-            movingLine.style.left = (((localTime - startOfDayLocal) / millisecondsInDay) * (document.querySelector('.timeline').offsetWidth)) + 'px';
-        }
-        function handleResize() {
-            displayEvents();
-            updateMovingLine();
-        }
-        function setDay(day){
-           renderTimeMarkers();
-           displayEvents(day);
-            updateMovingLine();
-        }
-           function createModal(modalId, contentId){
-  var modalStatusClick = function(modal, modalId){
-   };
-   var content = document.getElementById(contentId); 
-   var modal = document.getElementById(modalId);
-   var close = document.createElement('span');
-   close.id = 'close';
-   close.textContent = '×';  
-   close.style.cssText = `
-    color: #B00000;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: -2%;
-   `;
-   const setContentSize = function(){
-    if(window.innerWidth > window.innerHeight){
-     content.style.cssText = `
-     background-color: #323338;
-     margin: auto;
-     padding: 20px;
-     width: 20vw;
-     height: 10vh;
-     border-radius: 25px;
-     text-align: center;
-     `;
-    }
-    else{
-    content.style.cssText = `
-     width: 30vw;
-     height: 6vh;
-     background-color: #323338;
-     margin: auto;
-     padding: 20px;  
-     border-radius: 25px;
-     text-align: center;
-    `;
-    }
-   };
-   setContentSize();
-   window.onresize = function(){
-     setContentSize();
-  };
-   modal.style.cssText = `
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    width: 10vw;
-    height: 10vh;    
-   `;
-    content.prepend(close);           
-  let el = document.getElementById(modalId).style;   
-    document.onclick = function(event){       
-    el.display = 'block';
-    el.left = event.offsetX + 'px';
-    el.top = event.offsetY + 'px';
-    };
-    document.getElementById('close').onclick = function(){   
-    document.getElementById(modalId).style.display = 'none';
-    };
+<script>
+ var Kn = document.getElementById('Kn');
+ var R = document.getElementById('R');
+ var O = document.getElementById('O');
+ var Y = document.getElementById('Y');
+ var G = document.getElementById('G');
+ var Bl = document.getElementById('Bl');
+ var Blu = document.getElementById('Blu');
+ var V = document.getElementById('V');
+ var B = document.getElementById('B');
+ var W = document.getElementById('W');
+ var Kv = document.getElementById('Kv');
+ var ctx = Kv.getContext('2d');
+ let isDrawing = false;
+ let currentColor = 'black';
+ let lastX = 0,
+     lastY = 0;
+ function setColor(color) {
+   currentColor = color;
  }
-        window.addEventListener('resize', function() {
-            renderTimeMarkers();
-            updateMovingLines();
-        });
-        window.addEventListener('resize', handleResize);
-        displayEvents();
-        renderTimeMarkers();
-        setInterval(updateMovingLines, 1000);
-        updateMovingLines();
-    </script>
-
-</body>
+ Kv.addEventListener('mousedown', (e) => {
+  if (e.buttons === 1) {  
+    isDrawing = true;
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+  }
+});
+Kv.addEventListener('mouseup', (e) => {
+  isDrawing = false;  
+});
+Kv.addEventListener('mousemove', (e) => {
+  if (!isDrawing || e.buttons !== 1) return; 
+  const currentX = e.offsetX;
+  const currentY = e.offsetY;
+  draw(lastX, lastY, currentX, currentY);  
+  lastX = currentX;
+  lastY = currentY;
+});
+Kv.addEventListener('touchstart', (e) => {
+  e.preventDefault();  
+  isDrawing = true;
+  const touch = e.touches[0];
+  lastX = touch.clientX - Kv.offsetLeft; 
+  lastY = touch.clientY - Kv.offsetTop;  
+});
+Kv.addEventListener('touchmove', (e) => {
+  if (!isDrawing) return;
+  e.preventDefault();  
+  const touch = e.touches[0];
+  const currentX = touch.clientX - Kv.offsetLeft;
+  const currentY = touch.clientY - Kv.offsetTop;
+  draw(lastX, lastY, currentX, currentY);
+  lastX = currentX;
+  lastY = currentY;
+});
+Kv.addEventListener('touchend', (e) => {
+  isDrawing = false;  
+});
+ function draw(x1, y1, x2, y2) {
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.strokeStyle = currentColor;
+  ctx.lineWidth = 5;
+  ctx.stroke();
+  ctx.closePath();
+ }
+ function sizes(ids, width, height){
+  ids.forEach(id => {
+   id.style.width = width;
+   id.style.height = height;
+  });
+ }
+ sizes([R, O, Y, G, Bl, Blu, V, B, W], '20px', '20px');
+</script>
 </html>

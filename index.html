@@ -422,67 +422,6 @@ const startOfDay = new Date().setHours(0, 0, 0, 0);
            displayEvents(day);
             updateMovingLine();
         }
-       function createModal(modalId, contentId){
-  var modalStatusClick = function(modal, modalId){
-   };
-   var content = document.getElementById(contentId); 
-   var modal = document.getElementById(modalId);
-   var close = document.createElement('span');
-   close.id = 'close';
-   close.textContent = '×';  
-   close.style.cssText = `
-    color: #B00000;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: -2%;
-   `;
-   const setContentSize = function(){
-    if(window.innerWidth > window.innerHeight){
-     content.style.cssText = `
-     background-color: #323338;
-     margin: auto;
-     padding: 20px;
-     width: 20vw;
-     height: 10vh;
-     border-radius: 25px;
-     text-align: center;
-     `;
-    }
-    else{
-    content.style.cssText = `
-     width: 30vw;
-     height: 6vh;
-     background-color: #323338;
-     margin: auto;
-     padding: 20px;  
-     border-radius: 25px;
-     text-align: center;
-    `;
-    }
-   };
-   setContentSize();
-   window.onresize = function(){
-     setContentSize();
-  };
-   modal.style.cssText = `
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    width: 10vw;
-    height: 10vh;    
-   `;
-    content.prepend(close);           
-  let el = document.getElementById(modalId).style;   
-    document.onclick = function(event){       
-    el.display = 'block';
-    el.left = event.offsetX + 'px';
-    el.top = event.offsetY + 'px';
-    };
-    document.getElementById('close').onclick = function(){   
-    document.getElementById(modalId).style.display = 'none';
-    };
- }
         window.addEventListener('resize', function() {
             renderTimeMarkers();
             updateMovingLines();

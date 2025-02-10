@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Горизонтальная прокрутка с фиксированным содержанием</title>
+  <title>Расписание</title>
   <style>
     /* Стили для страницы */
     body {
@@ -42,73 +42,62 @@
     }
 
     /* Стили для кнопок навигации */
-    .nav-buttons {
+    .button {
       margin: 0;
       padding: 0;
-      list-style: none;
+      height: 10px;
+      background: linear-gradient(
+                rgba(255, 255, 255, 0.5)
+                rgba(0, 0, 0, 0));
     }
+    .timeline {
+            width: 200%;
+            height: 4px;
+            background-color: #5c5c5c;
+            position: relative;
+        }
+        .moving-line {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(
+                rgba(0, 0, 0, 0),
+                red,
+                rgba(0, 0, 0, 0));
+            top: -17px;
+            z-index: 3;
+            opacity: 0.6;
+        }
+    .container {
+            width: 180%;
+            position: relative;
+            height: 5vh;
+            top: 15vh;
+            left: 74vw;
+        }
 
-    .nav-buttons li {
-      display: inline;
-      margin-right: 20px;
-    }
-
-    .nav-buttons a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* Стили для разделов контента */
-    .section {
-      width: 100vw;
-      height: 100vh;
-      display: inline-block;
-      padding: 20px;
-    }
-
-    /* Разделы контента для примера */
-    .section:nth-child(even) {
-      background-color: lightblue;
-    }
-
-    .section:nth-child(odd) {
-      background-color: lightgreen;
-    }
   </style>
 </head>
 <body>
 
   <!-- Навигационное меню -->
   <div class="fixed-nav">
-    <ul class="nav-buttons">
-      <li><a href="#section1">Раздел 1</a></li>
-      <li><a href="#section2">Раздел 2</a></li>
-      <li><a href="#section3">Раздел 3</a></li>
-      <li><a href="#section4">Раздел 4</a></li>
-    </ul>
+        <button class="button" onclick="setDay(1);">пн</button>
+        <button class="button" onclick="setDay(2);">вт</button>
+        <button class="button" onclick="setDay(3);">ср</button>
+        <button class="button" onclick="setDay(4);">чт</button>
+        <button class="button" onclick="setDay(5);">пт</button>
+        <button class="button" onclick="setDay(6);">сб</button>
+        <button class="button" onclick="setDay(0);">вс</button>
   </div>
 
   <!-- Контейнер с горизонтальной прокруткой -->
   <div class="scroll-container">
     <div class="content">
-      <!-- Разделы контента -->
-      <div id="section1" class="section">
-        <h2>Раздел 1</h2>
-        <p>Содержимое раздела 1. Много текста и информации.</p>
-      </div>
-      <div id="section2" class="section">
-        <h2>Раздел 2</h2>
-        <p>Содержимое раздела 2. Много текста и информации.</p>
-      </div>
-      <div id="section3" class="section">
-        <h2>Раздел 3</h2>
-        <p>Содержимое раздела 3. Много текста и информации.</p>
-      </div>
-      <div id="section4" class="section">
-        <h2>Раздел 4</h2>
-        <p>Содержимое раздела 4. Много текста и информации.</p>
-      </div>
+      <div class="container">
+        <div class="timeline" id="timeline"></div>
+        <div class="moving-line" id="movingLine"></div>
+    </div>
     </div>
   </div>
 

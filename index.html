@@ -3,136 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Прокручиваемая страница с фиксированным верхним меню</title>
+  <title>Горизонтальная прокрутка с фиксированным содержанием</title>
   <style>
+    /* Стили для страницы */
     body {
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      overflow-x: auto;
     }
 
-    /* Контейнер для прокрутки вправо */
-    .content-wrapper {
-      display: flex;
-      flex-direction: row;
-      min-width: 200vw; /* Ширина контента в два раза больше экрана */
+    /* Стили для контейнера с горизонтальной прокруткой */
+    .scroll-container {
+      width: 100vw;
+      height: 100vh;
+      overflow-x: auto;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    /* Стили для содержимого страницы */
+    .content {
+      display: inline-block;
+      width: 300vw; /* Делаем контент шире для прокрутки */
       height: 100%;
     }
 
-    /* Верхнее меню */
-    .navbar {
-      position: sticky;
+    /* Стили для фиксированного меню */
+    .fixed-nav {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #333;
+      background-color: rgba(0, 0, 0, 0.7);
       color: white;
-      padding: 10px 0;
+      padding: 10px;
       text-align: center;
-      z-index: 100;
+      z-index: 10;
     }
 
-    .navbar a {
+    /* Стили для кнопок навигации */
+    .nav-buttons {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-buttons li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    .nav-buttons a {
+      color: white;
       text-decoration: none;
-      color: white;
-      padding: 10px 20px;
-      margin: 0 15px;
-      display: inline-block;
-      background-color: #444;
-      border-radius: 4px;
+      font-weight: bold;
     }
 
-    .navbar a:hover {
-      background-color: #555;
-    }
-
-    /* Основной контент */
-    .main-content {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-    }
-
+    /* Стили для разделов контента */
     .section {
-      margin-bottom: 50px;
-    }
-
-    .section h2 {
-      margin-top: 0;
-    }
-
-    /* Для кнопок перехода */
-    .scroll-button {
+      width: 100vw;
+      height: 100vh;
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+      padding: 20px;
     }
 
-    .scroll-button:hover {
-      background-color: #0056b3;
+    /* Разделы контента для примера */
+    .section:nth-child(even) {
+      background-color: lightblue;
+    }
+
+    .section:nth-child(odd) {
+      background-color: lightgreen;
     }
   </style>
 </head>
 <body>
 
-  <!-- Верхнее меню -->
-  <div class="navbar">
-    <a href="#section1">Раздел 1</a>
-    <a href="#section2">Раздел 2</a>
-    <a href="#section3">Раздел 3</a>
-    <a href="#section4">Раздел 4</a>
+  <!-- Навигационное меню -->
+  <div class="fixed-nav">
+    <ul class="nav-buttons">
+      <li><a href="#section1">Раздел 1</a></li>
+      <li><a href="#section2">Раздел 2</a></li>
+      <li><a href="#section3">Раздел 3</a></li>
+      <li><a href="#section4">Раздел 4</a></li>
+    </ul>
   </div>
 
-  <div class="content-wrapper">
-    <!-- Основной контент -->
-    <div class="main-content">
+  <!-- Контейнер с горизонтальной прокруткой -->
+  <div class="scroll-container">
+    <div class="content">
+      <!-- Разделы контента -->
       <div id="section1" class="section">
         <h2>Раздел 1</h2>
-        <p>Текст раздела 1. Это начало содержимого страницы, которое можно прокручивать вправо.</p>
-        <button class="scroll-button" onclick="scrollToSection('section2')">Перейти ко второму разделу</button>
+        <p>Содержимое раздела 1. Много текста и информации.</p>
       </div>
       <div id="section2" class="section">
         <h2>Раздел 2</h2>
-        <p>Текст раздела 2. Этот раздел содержит информацию, которую можно просматривать при прокрутке вправо.</p>
-        <button class="scroll-button" onclick="scrollToSection('section3')">Перейти к третьему разделу</button>
+        <p>Содержимое раздела 2. Много текста и информации.</p>
       </div>
       <div id="section3" class="section">
         <h2>Раздел 3</h2>
-        <p>Текст раздела 3. Здесь продолжается содержание, которое будет прокручиваться вправо.</p>
-        <button class="scroll-button" onclick="scrollToSection('section4')">Перейти к четвертому разделу</button>
+        <p>Содержимое раздела 3. Много текста и информации.</p>
       </div>
       <div id="section4" class="section">
         <h2>Раздел 4</h2>
-        <p>Текст раздела 4. Завершающий раздел на странице.</p>
-        <button class="scroll-button" onclick="scrollToSection('section1')">Перейти к первому разделу</button>
+        <p>Содержимое раздела 4. Много текста и информации.</p>
       </div>
     </div>
   </div>
-
-  <script>
-    // Функция для плавного прокручивания к разделу
-    function scrollToSection(sectionId) {
-      const target = document.getElementById(sectionId);
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Обработчик перехода по ссылкам из меню
-    document.querySelectorAll('.navbar a').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>
 
 </body>
 </html>

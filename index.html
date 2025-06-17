@@ -1,101 +1,253 @@
 <!DOCTYPE html>
-<html>
-  <canvas id='Kv' width='500' height='500' ></canvas>
-  <br>
-  <div id='Kn'>
-    <button onclick="setColor('red')"><img id='R' src='https://sun9-78.userapi.com/s/v1/ig2/pMySKAvxn6lRkjuomGs5RJxueyYKWuivdE3McSBCsxHxOAfB-G7MClwZHHbIhLKtL3rxSFmUnzXEjv3X58cPJNdj.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=0r-x7zxC4phULDsj2GmUP-JNpd0IhzOwCr6R98bX71E&cs=100x100'></button>
-    <button onclick="setColor('orange')"><img id='O' src='https://sun9-30.userapi.com/s/v1/ig2/mZyHpz9aJguubxf2TUie3_2iVodbzMprLmRyEavA1iwjxoWy1QQaLU5EwBvvXITLsZJJDAx_oIesk7mnZ7WPsa5G.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=GwCw_Hi0vDuwc2n2_zbnHo4y1rORWAvlV9kpcs5S7m8&cs=100x100'></button>
-    <button onclick="setColor('yellow')"><img id='Y' src='https://sun9-80.userapi.com/s/v1/ig2/4vEM5c-MRJ5Hm8jVyimL6Sc2e2Y19PQ_6y4Pe2aK0TsfuJxx5w0zgRrK_yImc2XXRxS4_yORQVT4UCUvN5QkXWzT.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=NVWDZ1PzemrIWF6aWgzszMzbgzRFIrUJ6gsVDCqi_s8&cs=100x100'></button>
-    <button onclick="setColor('green')"><img id='G' src='https://sun9-42.userapi.com/s/v1/ig2/UYk32195A6w0JoZaulidrRlXQvI5GklPkJoLw_p4HHljQhlHu81ZiyFjROd9HUG6lSMGTaAo3l6w-CYod4Aoa8EV.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=ytCjdGfngcmBC0rwCWlP_58vOTjAgNIq7qfnL3kTA3k&cs=100x100'></button>
-    <button onclick="setColor('#59cbe8')"><img id='Bl' src='https://sun9-9.userapi.com/s/v1/ig2/xG37HxzBFfcEh4Rtjzec7f6I3Y89ZQwQQFcIwrjF-140MpA-7yOx-A8R43n9aMP34w9F3wuR_nw04JmHfT7VCrhw.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=3QTYLjEPf6Twxdzj3vMWkc-XzzV6wUAuDEopFHKY5Ac&cs=100x100'></button>
-    <button onclick="setColor('blue')"><img id='Blu' src='https://sun9-26.userapi.com/s/v1/ig2/RTcouJz4Ga14R6SLQyk6ixP8YBYQdUmiMhlSJ-if9hCLIGVGfbYSQkH-YS7tNF0h6nHh1qgpdbT7y_Uezs8fIdka.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=qMf0xJJoEEvlMjZWPoyxmNGrGPqPtiUTmbpRkHuSnbA&cs=100x100'></button>
-    <button onclick="setColor('violet')"><img id='V' src='https://sun9-80.userapi.com/s/v1/ig2/MqPjY8edHWsl9jAfN5Kfj-NaNYqU4xxVZ7C1MBCqJBrF45hRhsFDfeSgSfK7NQmLfk_H8xSCjB0ur_AnKFjUs3Su.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=AzLZShH-BjSv2LCSjxCon06kCw5JT2dsZchwoDD25Qk&cs=100x100'></button>
-    <button onclick="setColor('black')"><img id='B' src='https://sun9-2.userapi.com/s/v1/ig2/eG927YJUOrXuP3zxclM2QVjXo6fhecROWYu4lQscXi0qNODSXR-ttPAvQQEI3LV_2gYhxCnqRwEtrvqdMzKnQJS5.jpg?quality=95&as=32x32,48x48,72x72,100x100&from=bu&u=Ti2GZ9olTJlf67SgeNpoLz_QXrpApqoZYDy1dweyfiI&cs=100x100'></button>
-    <button onclick="setColor('white')"><img id='W' src='https://sun9-76.userapi.com/s/v1/ig2/izzYyToJPg2S71EUq2_3gzZkLOTCgSS9W2eKdGpZEUYCNGVAgdGI4leAl7deE1S1U387xOwR4zgvVKSJA0hNfjKy.jpg?quality=95&as=32x32,48x48,72x72,104x104&from=bu&u=kn5qn4qs30Hajj71QIOV0ORxBZYS2TcfL7eO6kyAHeQ&cs=104x104'></button>
-  </div>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
   <style>
-    #Kn {
-      width = '10px';
-      height = '15px';
-    }
-    canvas {
-      background-color: white;
-      border: 5px solid black;
-    }
+    body { display: flex; height: 100vh; margin: 0; }
+    #tools { width: 220px; padding: 10px; background: #f0f0f0; box-sizing: border-box; }
+    #canvas { flex: 1; border: 1px solid #ccc; }
+    #log { width: 260px; padding: 10px; background: #fafafa; box-sizing: border-box; font-family: monospace; white-space: pre; overflow: auto; }
+    button { width: 100%; margin: 5px 0; }
+    textarea { width: 100%; height: 100px; }
   </style>
+</head>
+<body>
+
+  <div id="tools">
+    <button id="addMove">Add Move (M)</button>
+    <button id="addH">Add H</button>
+    <button id="addV">Add V</button>
+    <button id="addLine">Add L</button>
+    <button id="addQuad">Add Q</button>
+    <button id="addCubic">Add C</button>
+    <button id="insertImage">Insert Image</button>
+    <hr>
+    <label>Paste segments:<br>
+      <textarea id="inputSeg" placeholder="M 100 100
+H 200
+V 150
+L 250 200
+Q 300 150, 350 200
+C 360 180, 400 100, 450 150"></textarea>
+    </label>
+    <button id="loadSeg">Load from Text</button>
+  </div>
+
+  <svg id="canvas" xmlns="http://www.w3.org/2000/svg">
+    <defs></defs>
+    <image id="bgImage" x="0" y="0" width="0" height="0" href="" preserveAspectRatio="xMidYMid slice"/>
+    <path id="path" fill="none" stroke="#333" stroke-width="2"/>
+  </svg>
+
+  <div id="log"></div>
+
 <script>
- var Kn = document.getElementById('Kn');
- var R = document.getElementById('R');
- var O = document.getElementById('O');
- var Y = document.getElementById('Y');
- var G = document.getElementById('G');
- var Bl = document.getElementById('Bl');
- var Blu = document.getElementById('Blu');
- var V = document.getElementById('V');
- var B = document.getElementById('B');
- var W = document.getElementById('W');
- var Kv = document.getElementById('Kv');
- var ctx = Kv.getContext('2d');
- let isDrawing = false;
- let currentColor = 'black';
- let lastX = 0,
-     lastY = 0;
- function setColor(color) {
-   currentColor = color;
- }
- Kv.addEventListener('mousedown', (e) => {
-  if (e.buttons === 1) {  
-    isDrawing = true;
-    lastX = e.offsetX;
-    lastY = e.offsetY;
+(() => {
+  const svg = document.getElementById('canvas');
+  const pathEl = document.getElementById('path');
+  const logEl = document.getElementById('log');
+  const bgImage = document.getElementById('bgImage');
+
+  let segments = []; // {cmd: 'M'|'H'|'V'|'L'|'Q'|'C', pts: [{x,y},...], circles: [...]}
+
+  function createCircle(pt, onDrag) {
+    const c = document.createElementNS(svg.namespaceURI, 'circle');
+    c.setAttribute('cx', pt.x);
+    c.setAttribute('cy', pt.y);
+    c.setAttribute('r', 5);
+    c.setAttribute('fill', '#e74c3c');
+    svg.appendChild(c);
+    let offset = {};
+    c.addEventListener('mousedown', e => {
+      e.preventDefault();
+      offset.x = pt.x - e.offsetX;
+      offset.y = pt.y - e.offsetY;
+      window.addEventListener('mousemove', onmove);
+      window.addEventListener('mouseup', onup);
+    });
+    function onmove(e) {
+      pt.x = e.offsetX + offset.x;
+      pt.y = e.offsetY + offset.y;
+      c.setAttribute('cx', pt.x);
+      c.setAttribute('cy', pt.y);
+      redraw();
+    }
+    function onup() {
+      window.removeEventListener('mousemove', onmove);
+      window.removeEventListener('mouseup', onup);
+    }
+    return c;
   }
-});
-Kv.addEventListener('mouseup', (e) => {
-  isDrawing = false;  
-});
-Kv.addEventListener('mousemove', (e) => {
-  if (!isDrawing || e.buttons !== 1) return; 
-  const currentX = e.offsetX;
-  const currentY = e.offsetY;
-  draw(lastX, lastY, currentX, currentY);  
-  lastX = currentX;
-  lastY = currentY;
-});
-Kv.addEventListener('touchstart', (e) => {
-  e.preventDefault();  
-  isDrawing = true;
-  const touch = e.touches[0];
-  lastX = touch.clientX - Kv.offsetLeft; 
-  lastY = touch.clientY - Kv.offsetTop;  
-});
-Kv.addEventListener('touchmove', (e) => {
-  if (!isDrawing) return;
-  e.preventDefault();  
-  const touch = e.touches[0];
-  const currentX = touch.clientX - Kv.offsetLeft;
-  const currentY = touch.clientY - Kv.offsetTop;
-  draw(lastX, lastY, currentX, currentY);
-  lastX = currentX;
-  lastY = currentY;
-});
-Kv.addEventListener('touchend', (e) => {
-  isDrawing = false;  
-});
- function draw(x1, y1, x2, y2) {
-  ctx.beginPath();
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2, y2);
-  ctx.strokeStyle = currentColor;
-  ctx.lineWidth = 5;
-  ctx.stroke();
-  ctx.closePath();
- }
- function sizes(ids, width, height){
-  ids.forEach(id => {
-   id.style.width = width;
-   id.style.height = height;
-  });
- }
- sizes([R, O, Y, G, Bl, Blu, V, B, W], '20px', '20px');
+
+  function redraw() {
+    let d = '';
+    segments.forEach((s,i) => {
+      const pts = s.pts;
+      switch(s.cmd) {
+        case 'M':
+          pts.forEach(pt => d += `M${pt.x} ${pt.y} `);
+          break;
+        case 'H':
+          d += H${pts[1].x} ;
+          break;
+        case 'V':
+          d += V${pts[1].y} ;
+          break;
+        case 'L': {
+          const dx = pts[1].x - pts[0].x, dy = pts[1].y - pts[0].y;
+          if (dy===0) d += H${pts[1].x} ;
+          else if (dx===0) d += V${pts[1].y} ;
+          else d += L${pts[1].x} ${pts[1].y} ;
+        } break;
+        case 'Q':
+          d += Q${pts[1].x} ${pts[1].y}, ${pts[2].x} ${pts[2].y} ;
+          break;
+        case 'C':
+          d += C${pts[1].x} ${pts[1].y}, ${pts[2].x} ${pts[2].y}, ${pts[3].x} ${pts[3].y} ;
+          break;
+      }
+    });
+    pathEl.setAttribute('d', d.trim());
+
+    // Лог
+    let txt = '';
+    segments.forEach(s => {
+      switch(s.cmd) {
+        case 'M':
+          s.pts.forEach(pt => txt += `M ${pt.x.toFixed(1)} ${pt.y.toFixed(1)}\n`);
+          break;
+        case 'H':
+          txt += H ${s.pts[1].x.toFixed(1)}\n; break;
+        case 'V':
+          txt += V ${s.pts[1].y.toFixed(1)}\n; break;
+        case 'L':
+          txt += L ${s.pts[1].x.toFixed(1)} ${s.pts[1].y.toFixed(1)}\n; break;
+        case 'Q':
+          txt += Q ${s.pts[1].x.toFixed(1)} ${s.pts[1].y.toFixed(1)}, ${s.pts[2].x.toFixed(1)} ${s.pts[2].y.toFixed(1)}\n; break;
+        case 'C':
+          txt += C ${s.pts[1].x.toFixed(1)} ${s.pts[1].y.toFixed(1)}, ${s.pts[2].x.
+toFixed(1)} ${s.pts[2].y.toFixed(1)}, ${s.pts[3].x.toFixed(1)} ${s.pts[3].y.toFixed(1)}\n; break;
+      }
+    });
+    logEl.textContent = txt;
+  }
+
+  function addCmd(cmd) {
+    const last = segments.length ? segments[segments.length-1].pts.slice(-1)[0] : {x:100,y:100};
+    let pts = [];
+    switch(cmd) {
+      case 'M':
+        pts = [{x: last.x, y: last.y}];
+        break;
+      case 'H':
+        pts = [{x: last.x, y: last.y}, {x: last.x + 100, y: last.y}];
+        break;
+      case 'V':
+        pts = [{x: last.x, y: last.y}, {x: last.x, y: last.y + 100}];
+        break;
+      case 'L':
+        pts = [{x: last.x, y: last.y}, {x: last.x + 100, y: last.y + 50}];
+        break;
+      case 'Q':
+        pts = [
+          {x:last.x, y:last.y},
+          {x:last.x + 50, y:last.y - 50},
+          {x:last.x +100, y:last.y}
+        ];
+        break;
+      case 'C':
+        pts = [
+          {x:last.x, y:last.y},
+          {x:last.x +30, y:last.y -50},
+          {x:last.x +70, y:last.y +50},
+          {x:last.x +100, y:last.y}
+        ];
+        break;
+    }
+    const seg = {cmd, pts, circles: []};
+    pts.forEach(pt => seg.circles.push(createCircle(pt, redraw)));
+    segments.push(seg);
+    redraw();
+  }
+
+  document.getElementById('addMove').onclick  = ()=>addCmd('M');
+  document.getElementById('addH').onclick     = ()=>addCmd('H');
+  document.getElementById('addV').onclick     = ()=>addCmd('V');
+  document.getElementById('addLine').onclick  = ()=>addCmd('L');
+  document.getElementById('addQuad').onclick  = ()=>addCmd('Q');
+  document.getElementById('addCubic').onclick = ()=>addCmd('C');
+
+  document.getElementById('loadSeg').onclick = () => {
+    // очистить старое
+    segments.forEach(s=>s.circles.forEach(c=>svg.removeChild(c)));
+    segments = [];
+    const lines = document.getElementById('inputSeg').value.trim().split(/[\r\n]+/);
+    let currentPos = {x:0,y:0};
+    lines.forEach((ln,i) => {
+      const m = ln.trim().match(/^([MHVLQC])\s*(.*)$/i);
+      if (!m) return;
+      const cmd = m[1].toUpperCase();
+      const nums = m[2].replace(/,/g,' ').trim().split(/\s+/).map(Number);
+      let pts = [];
+      switch(cmd) {
+        case 'M':
+          pts = [{x: nums[0], y: nums[1]}];
+          currentPos = {x:nums[0], y:nums[1]};
+          break;
+        case 'H':
+          pts = [{...currentPos}, {x: nums[0], y: currentPos.y}];
+          currentPos.x = nums[0];
+          break;
+        case 'V':
+          pts = [{...currentPos}, {x: currentPos.x, y: nums[0]}];
+          currentPos.y = nums[0];
+          break;
+        case 'L':
+          pts = [{...currentPos}, {x: nums[0], y: nums[1]}];
+          currentPos = {x: nums[0], y: nums[1]};
+          break;
+        case 'Q':
+          pts = [{...currentPos}, {x: nums[0], y: nums[1]}, {x: nums[2], y: nums[3]}];
+          currentPos = {x: nums[2], y: nums[3]};
+          break;
+        case 'C':
+          pts = [{...currentPos}, {x: nums[0], y: nums[1]}, {x: nums[2], y: nums[3]}, {x: nums[4], y: nums[5]}];
+          currentPos = {x: nums[4], y: nums[5]};
+          break;
+      }
+      if (pts.length) {
+        const seg = {cmd, pts, circles: []};
+        pts.forEach(pt => seg.circles.push(createCircle(pt, redraw)));
+        segments.push(seg);
+      }
+    });
+    redraw();
+  };
+
+  document.getElementById('insertImage').onclick = () => {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept='image/*';
+    inp.onchange = e => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = ev => {
+        bgImage.setAttribute('href', ev.target.result);
+        const img = new Image();
+        img.onload = ()=> {
+          svg.setAttribute('viewBox', `0 0 ${img.width} ${img.height}`);
+          bgImage.setAttribute('width', img.width);
+          bgImage.setAttribute('height', img.height);
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    };
+    inp.click();
+  };
+
+  redraw();
+})();
 </script>
+
+</body>
 </html>
